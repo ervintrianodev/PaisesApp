@@ -15,4 +15,10 @@ export class PaisService {
     const urlFindPaisByName = `${this.urlAPI}${endPointFindPaisByName}`;
     return this.httpClient.get<Country[]>(urlFindPaisByName);
   }
+
+  public buscarByCapital(capital: string): Observable<Country[]> {
+    const endPointFindByCapital = `/capital/${capital}`;
+    const urlFindByCapital = `${this.urlAPI}${endPointFindByCapital}`;
+    return this.httpClient.get<Country[]>(urlFindByCapital);
+  }
 }

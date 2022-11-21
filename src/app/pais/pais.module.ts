@@ -7,6 +7,8 @@ import { ByCountryComponent } from './pages/by-country/by-country.component';
 import { ByRegionComponent } from './pages/by-region/by-region.component';
 import { ShowCountriesComponent } from './pages/show-countries/show-countries.component';
 import { RouterModule } from '@angular/router';
+import { PaisTableComponent } from './components/pais-table/pais-table.component';
+import { PaisSearchComponent } from './components/pais-search/pais-search.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { RouterModule } from '@angular/router';
     ByCountryComponent,
     ByRegionComponent,
     ShowCountriesComponent,
+    PaisTableComponent,
+    PaisSearchComponent,
   ],
   exports: [
     ByCapitalComponent,

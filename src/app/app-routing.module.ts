@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: ByCountryComponent, pathMatch: 'full' },
   { path: 'region', component: ByRegionComponent },
   { path: 'capital', component: ByCapitalComponent },
-  { path: 'pais/:country-code', component: ShowCountriesComponent },
+  { path: 'pais/:countrycode', component: ShowCountriesComponent },
   { path: '**', redirectTo: '' },
 ];
 @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })

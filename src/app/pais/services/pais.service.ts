@@ -21,4 +21,9 @@ export class PaisService {
     const urlFindByCapital = `${this.urlAPI}${endPointFindByCapital}`;
     return this.httpClient.get<Country[]>(urlFindByCapital);
   }
+  public buscarPaisByCode(code: string): Observable<Country[]> {
+    const endPointFindPaisByCode = `/alpha/${code}`;
+    const urlFindPaisByCode = `${this.urlAPI}${endPointFindPaisByCode}`;
+    return this.httpClient.get<Country[]>(urlFindPaisByCode);
+  }
 }

@@ -1,44 +1,64 @@
-<div *ngIf="!country; else divPais" class="d-flex justify-content-center">
-  <div class="spinner-grow text-success px-1" role="status">
+<div *ngIf="!country; else divPais" class="d-flex justify-content-center my-5">
+  <div class="spinner-grow text-success px-1 mx-2" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-  <div class="spinner-grow text-success px-1" role="status">
+  <div class="spinner-grow text-success px-1 mx-2" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-  <div class="spinner-grow text-success px-1" role="status">
+  <div class="spinner-grow text-success px-1 mx-2" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-
 <ng-template #divPais>
   <div class="row">
     <div class="col-12">
       <h1>Pais: {{ country.name.common }}</h1>
     </div>
   </div>
-</ng-template>
 
-<div class="row">
+  <div class="row">
     <div class="col">
-        <h3>Bandera</h3>
-        <img [src]="country.flags.svg" alt="" class="img-thumbnail">
+      <h3>Bandera</h3>
+      <img [src]="country.flags.svg" alt="" class="img-thumbnail" />
     </div>
     <div class="col">
       <h4 class="mb-3">Informacion</h4>
       <ul class="list-group">
-        <li class="list-group-item">Poblacion <span class="badge bg-primary">{{country.population | number}}</span></li>
-        <li class="list-group-item">Region <span class="badge bg-primary">{{country.region}}</span></li>
-        <li class="list-group-item">SubRegion <span class="badge bg-primary">{{country.subregion}}</span></li>
-        <li class="list-group-item">Lenguajes <span class="badge bg-primary">{{country.languages.spa}}</span></li>
-        <li class="list-group-item">Area <span class="badge bg-primary">{{country.area | number}}</span></li>
-        <li class="list-group-item">Continente <span class="badge bg-primary">{{country.continents}}</span></li>
+        <li class="list-group-item">
+          Poblacion
+          <span class="badge bg-primary">{{
+            country.population | number
+          }}</span>
+        </li>
+        <li class="list-group-item">
+          Region <span class="badge bg-primary">{{ country.region }}</span>
+        </li>
+        <li class="list-group-item">
+          SubRegion
+          <span class="badge bg-primary">{{ country.subregion }}</span>
+        </li>
+        <li class="list-group-item">
+          Lenguajes
+          <span class="badge bg-primary">{{ country.languages.spa }}</span>
+        </li>
+        <li class="list-group-item">
+          Area <span class="badge bg-primary">{{ country.area | number }}</span>
+        </li>
+        <li class="list-group-item">
+          Continente
+          <span class="badge bg-primary">{{ country.continents }}</span>
+        </li>
       </ul>
     </div>
-</div>
-<div class="row">
-  <div class="col">
-    <h3>Traducciones</h3>
-    <span *ngFor="let t of country.translations | keyvalue" class="badge bg-primary me-2">{{t.value.common}}</span>
-
   </div>
-</div>
+  <div class="row">
+    <div class="col">
+      <h3>Traducciones</h3>
+      <span
+        *ngFor="let t of country.translations | keyvalue"
+        class="badge bg-primary me-2"
+        >{{ t.value.common }}</span
+      >
+    </div>
+  </div>
+</ng-template>

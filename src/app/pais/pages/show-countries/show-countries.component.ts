@@ -26,13 +26,14 @@ export class ShowCountriesComponent implements OnInit {
       });*/
 
     this.activatedRoute.params.subscribe(({ countrycode }) => {
-      console.log(countrycode);
+    
       this.paisService.buscarPaisByCode(countrycode).subscribe({
         next: (pais:Country[]) => {
-          console.log(pais)
           this.country = pais[0];
         },
-        error: (err) => {},
+        error: (err) => {
+          console.error("El status es: "+err.status);
+        },
       });
     });
   }

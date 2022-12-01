@@ -11,33 +11,48 @@ export class ByCountryComponent {
   public termino: string = '';
   public hayError: boolean = false;
   public countries: Country[] = [];
+  public countriesSugeridos: Country[] = [];
   public contador: number = 0;
-  
-  public placeholder:string="Buscar por Pais...";
+  public showSugerencia: boolean = false;
+
+  public placeholder: string = 'Buscar por Pais...';
 
   constructor(private paisService: PaisService) {}
 
   public buscar(termino: string): void {
     this.hayError = false;
+    this.showSugerencia = false;
     console.log(this.termino);
     this.termino = termino;
-    this.paisService.buscarPais(this.termino).subscribe(
-      (paises) => {
+    this.paisService.buscarPais(this.termino).subscribe({
+      next: (paises) => {
         this.countries = paises;
         console.log(paises);
       },
-      (err) => {
+      error: (err) => {
         this.hayError = true;
         this.countries = [];
         console.log(err.status);
-      }
-    );
+      },
+    });
   }
 
-
-  public sugerencias(event:any):void{
-    this.hayError =false;
+  public sugerencias(termino: string): void {
+    this.hayError = false;
+    this.termino = termino;
+    this.showSugerencia = true;
     //TODO:crear sugerencias
+    this.paisService.buscarPais(termino).subscribe({
+      next: (paises) => {
+        this.countriesSugeridos = paises.splice(0, 5);
+      },
+      error: (err) => {
+        this.countriesSugeridos = [];
+      },
+    });
+  }
 
+  public buscarSugerido(termino: string): void {
+    this.buscar(termino);
   }
 }
